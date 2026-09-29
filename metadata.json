@@ -1,0 +1,6 @@
+{
+  "name": "Emy's Birthday Surprise",
+  "description": "A premium, interactive birthday celebration website with photo gallery, animations, countdown, gift box, fireworks, and heartfelt messages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
