@@ -1479,66 +1479,108 @@
        ========================================================= -->
   <script>
     // ================= CUSTOMIZE HERE =================
-    const birthdayPerson = "EMY ELIZABETH";
-    const birthdayDate = "2010-10-03"; // Format: YYYY-MM-DD
 
+    // 1. Person's Name
+    const birthdayPerson = "EMY ELIZABETH";
+
+    // 2. Birthday Date (YYYY-MM-DD)
+    const birthdayDate = "2010-10-03";
+
+    // 3. Opening, Personal, and Final Messages
     const openingMessage = "Happy Birthday dear EMY";
-    const personalMessage = "MANY MANY HAPPY RETURNS OF THE DAY!\n\nMay your day be filled with endless smiles, warmth, laughter, and all the delightful dreams your heart wishes for. You bring so much joy and light wherever you go. Wishing you the happiest and most blessed year ahead!";
+    const personalMessage = "MANY MANY HAPPY RETURNS OF THE DAY!\n\nMay your day be filled with endless smiles...";
     const finalMessage = "WISH YOU A HAPPY RETURNS OF THE DAY";
 
-    // Set to your direct audio URL (e.g., MP3). If empty or invalid, the built-in ambient music box melody synthesizer will play!
-    const musicUrl = ""; 
+    // 4. Background Music (URL to an MP3 file)
+    const musicUrl = "YOUR_MUSIC_URL"; // Leave empty or as YOUR_MUSIC_URL to use the built-in ambient music box synthesizer
 
-    // Hidden message revealed when gift box is opened
+    // 5. Hidden Gift Message (Revealed when tapping the gift box)
     const hiddenGiftMessage = "You are truly special to me. I LOVE YOU ❤️ 💕 ❤️";
 
-    // Secret message revealed when user clicks Reveal Secret
-    const secretMessage = "No matter how many days or years go by, you will always have a special place in my heart. You make every ordinary day brighter and more beautiful simply by being you. Happy Birthday, Emy! 🌟💖";
+    // 6. Secret Message (Revealed when tapping "Reveal Secret")
+    const secretMessage = "No matter how many days or years go by, you will always have a special place in my heart...";
 
-    // Photo Gallery Data (Add your photo links & captions here)
+    // 7. Photos & Captions
     const photos = [
       {
-        url: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=80",
-        caption: "Celebrating your unforgettable smile and boundless joy ✨"
+        url: "https://github.com/gelwin72-ui/-Birthday-website-/blob/139bd00f7910812934e814f444921ed23959d9a6/images/IMG_20260821_211445_431.jpg",
+        caption: "A celebration of your special smile ✨"
       },
       {
-        url: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1000&q=80",
-        caption: "Sweet moments and warm memories that last forever 🎂"
+        url: "https://github.com/gelwin72-ui/-Birthday-website-/blob/139bd00f7910812934e814f444921ed23959d9a6/images/IMG_20260928_190433_405.jpg",
+        caption: "Sweet moments and joyful memories 🎂"
       },
       {
-        url: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=80",
-        caption: "Wishing you starry nights, sunny days, and endless laughter 🎈"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80",
-        caption: "Cheers to another chapter of beautiful dreams coming true 🥂"
+        url: "https://github.com/gelwin72-ui/-Birthday-website-/blob/4f3737d9c9ede73101f6ab969c83f69ba512980d/images/IMG_20260929_182701_813.jpg",
+        caption: "A memory that will always have a special place in my heart ❤️"
       }
     ];
 
-    // Memories Timeline Data (Add your timeline entries here)
+    // 8. Memories Timeline
     const memories = [
       {
         date: "Chapter 1",
         title: "A Beautiful Beginning",
-        description: "The very first time we crossed paths. A memorable start to a wonderful connection that grew deeper each day."
+        description: "The unforgettable day our journey started..."
       },
       {
         date: "Chapter 2",
         title: "Unforgettable Laughter",
-        description: "Those countless shared jokes, random conversations, and quiet moments that turned ordinary days into pure gold."
+        description: "Those little random moments and deep talks that made everything feel special..."
       },
       {
         date: "Chapter 3",
-        title: "A Constant Blessing",
-        description: "Through every season and challenge, your kindness, warmth, and supportive presence have been a guiding light."
+        title: "Getting Closer",
+        description: "Somehow, the conversations became longer, the smiles became brighter, and the moments became more meaningful..."
       },
       {
-        date: "Today & Forever",
-        title: "Celebrating You",
-        description: "Today the world is a better place because you were born. May your journey ahead be blessed with limitless happiness!"
+        date: "Chapter 4",
+        title: "Beautiful Little Moments",
+        description: "It was never about the big things, but about those tiny moments that made ordinary days feel extraordinary..."
+      },
+      {
+        date: "Chapter 5",
+        title: "The Memories We Made",
+        description: "Every conversation, every laugh, and every unforgettable moment slowly became a beautiful part of our story..."
+      },
+      {
+        date: "Chapter 6",
+        title: "Through Every Moment",
+        description: "Some days were simple, some were unforgettable, but every moment became a memory worth keeping..."
+      },
+      {
+        date: "Chapter 7",
+        title: "A Special Place",
+        description: "Some people become memories, while a few become a special part of your story..."
+      },
+      {
+        date: "Chapter 8",
+        title: "More Memories To Come",
+        description: "This isn't the end of our story. There are still so many beautiful moments waiting to be created..."
+      },
+      {
+        date: "Chapter 9",
+        title: "Forever A Beautiful Memory",
+        description: "No matter how much time passes, some memories will always have a special place in the heart..."
+      },
+      {
+        date: "Chapter 10",
+        title: "Our Story Continues",
+        description: "And this is just another chapter of a story filled with smiles, memories, and countless beautiful moments..."
       }
     ];
     // ================= END OF CUSTOMIZE HERE =================
+
+    // Helper to resolve direct image URLs (e.g. converting GitHub blob URLs to raw CDN)
+    function resolveImageUrl(url) {
+      if (!url) return '';
+      let cleanUrl = url.trim();
+      if (cleanUrl.includes('github.com') && cleanUrl.includes('/blob/')) {
+        return cleanUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+      }
+      return cleanUrl;
+    }
+
 
 
     /* =========================================================
@@ -1609,6 +1651,11 @@
 
         // Scroll smoothly to hero
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Autoplay birthday music upon opening surprise
+        if (window.playBirthdayMusic) {
+          window.playBirthdayMusic();
+        }
       });
     }
 
@@ -1705,9 +1752,10 @@
         card.setAttribute('role', 'button');
         card.setAttribute('aria-label', `View photo ${idx + 1}: ${photo.caption}`);
 
+        const photoSrc = resolveImageUrl(photo.url);
         card.innerHTML = `
           <div class="photo-wrapper">
-            <img src="${photo.url}" alt="${photo.caption}" class="photo-img" loading="lazy" onerror="this.closest('.photo-card').classList.add('fallback-mode');">
+            <img src="${photoSrc}" alt="${photo.caption}" class="photo-img" loading="lazy" onerror="this.closest('.photo-card').classList.add('fallback-mode');">
             <div class="photo-fallback">
               <div class="fallback-icon">📸</div>
               <div class="fallback-text">Precious Memory ${idx + 1}</div>
@@ -1748,7 +1796,7 @@
         const p = photos[currentPhotoIdx];
         if (!p) return;
         if (modalImg) {
-          modalImg.src = p.url;
+          modalImg.src = resolveImageUrl(p.url);
           modalImg.alt = p.caption;
         }
         if (modalCaption) modalCaption.textContent = p.caption;
@@ -2091,6 +2139,30 @@
           if (isPlaying) startSynthMelody();
         });
       }
+
+      // Expose play function globally
+      window.playBirthdayMusic = playMusic;
+
+      // Autoplay immediately on load
+      setTimeout(() => {
+        if (!isPlaying) {
+          playMusic();
+        }
+      }, 400);
+
+      // In case browser policy requires a user touch/click first, trigger on first gesture
+      const triggerAutoPlayOnGesture = () => {
+        if (!isPlaying) {
+          playMusic();
+        }
+        window.removeEventListener('click', triggerAutoPlayOnGesture);
+        window.removeEventListener('touchstart', triggerAutoPlayOnGesture);
+        window.removeEventListener('pointerdown', triggerAutoPlayOnGesture);
+      };
+
+      window.addEventListener('click', triggerAutoPlayOnGesture, { once: true });
+      window.addEventListener('touchstart', triggerAutoPlayOnGesture, { once: true });
+      window.addEventListener('pointerdown', triggerAutoPlayOnGesture, { once: true });
     }
 
     /* Web Audio API Melody Synthesizer (Zero Dependency Fallback) */
