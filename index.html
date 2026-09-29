@@ -473,6 +473,277 @@
     }
 
     /* =========================================================
+       4.5 INTERACTIVE BIRTHDAY CANDLE & CAKE
+       ========================================================= */
+    .candle-section-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .cake-card {
+      padding: 3rem 2rem 2.5rem;
+      max-width: 580px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    .cake-stage {
+      position: relative;
+      width: 260px;
+      height: 230px;
+      margin: 1.5rem auto 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Cake Stand / Plate */
+    .cake-plate {
+      width: 260px;
+      height: 18px;
+      background: linear-gradient(180deg, #e0e0e0 0%, #a8a8a8 100%);
+      border-radius: 50%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 77, 121, 0.25);
+      position: relative;
+      z-index: 1;
+    }
+    .cake-plate::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 15px;
+      right: 15px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+    }
+    /* Cake Body */
+    .cake-layer-bottom {
+      width: 210px;
+      height: 65px;
+      background: linear-gradient(135deg, #ff758c 0%, #ff4d79 60%, #d81b60 100%);
+      border-radius: 12px 12px 18px 18px;
+      position: relative;
+      z-index: 2;
+      box-shadow: inset 0 5px 12px rgba(255, 255, 255, 0.4), inset 0 -6px 12px rgba(0, 0, 0, 0.25);
+      margin-bottom: -4px;
+    }
+    .cake-layer-top {
+      width: 155px;
+      height: 55px;
+      background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 60%, #ffb3c1 100%);
+      border-radius: 10px 10px 14px 14px;
+      position: relative;
+      z-index: 3;
+      box-shadow: inset 0 4px 10px rgba(255, 255, 255, 0.8), inset 0 -5px 10px rgba(216, 27, 96, 0.2);
+      margin-bottom: -6px;
+    }
+    .frosting-drip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 18px;
+      background: #ffffff;
+      border-radius: 10px 10px 8px 8px;
+      box-shadow: 0 4px 10px rgba(255, 77, 121, 0.3);
+    }
+    .frosting-drip::after {
+      content: '🍓 🍓 🍓';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      font-size: 1rem;
+      letter-spacing: 12px;
+      text-align: center;
+    }
+    /* Candle */
+    .candle-stick {
+      position: absolute;
+      top: 15px;
+      width: 14px;
+      height: 55px;
+      background: repeating-linear-gradient(
+        45deg,
+        #f9d423,
+        #f9d423 6px,
+        #ff4d79 6px,
+        #ff4d79 12px
+      );
+      border-radius: 4px 4px 2px 2px;
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+    }
+    .candle-wick {
+      position: absolute;
+      top: -8px;
+      left: 5px;
+      width: 3px;
+      height: 10px;
+      background: #2a2a2a;
+      border-radius: 2px;
+    }
+    /* Flame */
+    .candle-flame-btn {
+      position: absolute;
+      top: -38px;
+      left: -9px;
+      width: 32px;
+      height: 38px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      outline: none;
+      padding: 0;
+      z-index: 20;
+    }
+    .flame-element {
+      width: 18px;
+      height: 30px;
+      background: radial-gradient(ellipse at bottom, #ffffff 0%, #ffe600 25%, #ff7700 65%, rgba(255, 0, 0, 0) 95%);
+      border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+      box-shadow: 0 0 20px #ff9900, 0 0 35px #ff4d79, 0 0 50px rgba(255, 230, 0, 0.8);
+      animation: flameFlicker 1.4s infinite alternate ease-in-out;
+      transform-origin: 50% 90%;
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes flameFlicker {
+      0% { transform: scale(1) rotate(-2deg); filter: brightness(1); }
+      25% { transform: scale(1.08, 0.95) rotate(2deg); filter: brightness(1.15); }
+      50% { transform: scale(0.95, 1.05) rotate(-1deg); filter: brightness(0.95); }
+      75% { transform: scale(1.04, 0.98) rotate(3deg); filter: brightness(1.2); }
+      100% { transform: scale(1) rotate(-2deg); filter: brightness(1.05); }
+    }
+    .flame-element.extinguished {
+      opacity: 0;
+      transform: scale(0.2) translateY(-15px) rotate(25deg);
+      filter: brightness(0);
+      pointer-events: none;
+    }
+    /* Smoke Puff when blown */
+    .smoke-puff {
+      position: absolute;
+      top: -20px;
+      left: 2px;
+      width: 8px;
+      height: 8px;
+      background: rgba(220, 220, 220, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 25;
+    }
+    .smoke-puff.rise-smoke {
+      animation: smokeTrail 1.8s forwards ease-out;
+    }
+    @keyframes smokeTrail {
+      0% {
+        opacity: 0.85;
+        transform: scale(1) translate(0, 0);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(2.8) translate(12px, -35px);
+        filter: blur(2px);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(5) translate(25px, -70px);
+        filter: blur(6px);
+      }
+    }
+    /* Blow Hint */
+    .blow-instruction-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      background: rgba(255, 77, 121, 0.15);
+      border: 1px solid rgba(255, 117, 140, 0.35);
+      border-radius: var(--radius-full);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: pulseAttention 2s infinite ease-in-out;
+      margin-top: 0.5rem;
+    }
+    .blow-instruction-hint:hover {
+      background: rgba(255, 77, 121, 0.3);
+      border-color: var(--accent-rose);
+      transform: translateY(-2px);
+    }
+    @keyframes pulseAttention {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 121, 0.4); }
+      50% { transform: scale(1.04); box-shadow: 0 0 15px 4px rgba(255, 77, 121, 0.25); }
+    }
+    /* Wish Granted Card */
+    .wish-granted-reveal {
+      display: none;
+      margin-top: 2rem;
+      padding: 1.8rem 1.5rem;
+      background: linear-gradient(135deg, rgba(255, 77, 121, 0.25) 0%, rgba(249, 212, 35, 0.2) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.5);
+      border-radius: var(--radius-md);
+      animation: bounceInWish 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.3);
+      width: 100%;
+    }
+    @keyframes bounceInWish {
+      0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .wish-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-shadow: 0 2px 10px rgba(249, 212, 35, 0.5);
+    }
+    .wish-desc {
+      font-size: 1.05rem;
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .relight-btn {
+      padding: 0.65rem 1.4rem;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-weight: 600;
+    }
+    .relight-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* =========================================================
        5. PHOTO MEMORY GALLERY
        ========================================================= */
     .gallery-grid {
@@ -1209,6 +1480,7 @@
     <nav class="topbar-nav" aria-label="Main Navigation">
       <a href="#hero" class="topbar-link">Home</a>
       <a href="#countdown" class="topbar-link">Countdown</a>
+      <a href="#wish" class="topbar-link">Make a Wish</a>
       <a href="#gallery" class="topbar-link">Memories</a>
       <a href="#letter" class="topbar-link">Letter</a>
       <a href="#gift" class="topbar-link">Gift</a>
@@ -1276,6 +1548,60 @@
 
         <div id="countdown-status" class="countdown-status-banner">
           ✨ The countdown to your special moment is ticking!
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4.5 INTERACTIVE BIRTHDAY CANDLE & CAKE
+         ========================================================= -->
+    <section id="wish">
+      <div class="container candle-section-container">
+        <div class="section-header">
+          <span class="section-tag">Make A Magic Wish</span>
+          <h2 class="section-title">Blow Out The Candle 🕯️🎂</h2>
+          <p class="section-subtitle">Close your eyes, make your deepest wish, and blow out the candle flame!</p>
+        </div>
+
+        <div class="glass-card cake-card">
+          <!-- Interactive Cake & Candle Stage -->
+          <div class="cake-stage" id="interactive-cake-stage" title="Tap flame or cake to blow out the candle">
+            <!-- Candle & Flame -->
+            <div class="candle-stick">
+              <div class="candle-wick"></div>
+              <button id="candle-flame-btn" class="candle-flame-btn" aria-label="Blow out candle flame">
+                <div class="flame-element" id="flame-core"></div>
+              </button>
+              <div class="smoke-puff" id="smoke-puff-element"></div>
+            </div>
+
+            <!-- Cake Top Layer -->
+            <div class="cake-layer-top">
+              <div class="frosting-drip"></div>
+            </div>
+
+            <!-- Cake Bottom Layer -->
+            <div class="cake-layer-bottom"></div>
+
+            <!-- Cake Plate -->
+            <div class="cake-plate"></div>
+          </div>
+
+          <!-- Blow hint button -->
+          <button id="blow-action-btn" class="blow-instruction-hint" aria-label="Tap to blow out candle">
+            <span>🌬️ Tap to Blow Out The Candle!</span>
+          </button>
+
+          <!-- Wish Granted Announcement Card -->
+          <div id="wish-granted-card" class="wish-granted-reveal" role="status" aria-live="polite">
+            <h3 class="wish-title"><span>✨ Wish Granted! ✨</span></h3>
+            <p class="wish-desc" id="wish-granted-text">
+              Your heartfelt wish has been sent to the stars! 🌟 May every wonderful dream in your heart come true this year, <strong id="wish-person-name">EMY ELIZABETH</strong>! 💖
+            </p>
+            <button id="relight-candle-btn" class="relight-btn" aria-label="Relight the candle">
+              ✨ Light Candle Again 🕯️
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -1598,6 +1924,7 @@
       // 3. Initialize Interactive Components
       initOpeningScreen();
       initCountdown();
+      initCandleBlow();
       initGallery();
       initTypewriter();
       initGiftBox();
@@ -1619,6 +1946,9 @@
 
       const elHeroName = document.getElementById('hero-person-name');
       if (elHeroName) elHeroName.textContent = name;
+
+      const elWishName = document.getElementById('wish-person-name');
+      if (elWishName) elWishName.textContent = name;
 
       const elFinalHeading = document.getElementById('final-person-heading');
       if (elFinalHeading) elFinalHeading.textContent = `Happy Birthday, ${name} ❤️❤️`;
@@ -1724,6 +2054,118 @@
 
       updateCountdown();
       setInterval(updateCountdown, 1000);
+    }
+
+    /* =========================================================
+       2.5 INTERACTIVE CANDLE BLOW & WISH GRANTED
+       ========================================================= */
+    function initCandleBlow() {
+      const stage = document.getElementById('interactive-cake-stage');
+      const flameBtn = document.getElementById('candle-flame-btn');
+      const flameCore = document.getElementById('flame-core');
+      const smokePuff = document.getElementById('smoke-puff-element');
+      const blowBtn = document.getElementById('blow-action-btn');
+      const wishCard = document.getElementById('wish-granted-card');
+      const relightBtn = document.getElementById('relight-candle-btn');
+
+      let isBlown = false;
+
+      function blowOutCandle(e) {
+        if (e) e.stopPropagation();
+        if (isBlown) return;
+        isBlown = true;
+
+        // 1. Extinguish flame with sideways vanish
+        if (flameCore) flameCore.classList.add('extinguished');
+
+        // 2. Trigger realistic rising smoke
+        if (smokePuff) {
+          smokePuff.classList.remove('rise-smoke');
+          void smokePuff.offsetWidth; // trigger reflow
+          smokePuff.classList.add('rise-smoke');
+        }
+
+        // 3. Play celestial wish chime
+        playWishChime();
+
+        // 4. Update blow button
+        if (blowBtn) {
+          blowBtn.innerHTML = '<span>✨ Wish Has Been Made! ✨</span>';
+          blowBtn.style.background = 'rgba(255, 215, 0, 0.25)';
+          blowBtn.style.borderColor = 'rgba(255, 215, 0, 0.6)';
+        }
+
+        // 5. Show Wish Granted announcement card
+        if (wishCard) {
+          setTimeout(() => {
+            wishCard.style.display = 'block';
+          }, 350);
+        }
+
+        // 6. Launch celebratory fireworks & confetti
+        const stageRect = stage ? stage.getBoundingClientRect() : null;
+        const centerX = stageRect ? stageRect.left + stageRect.width / 2 : window.innerWidth / 2;
+        const centerY = stageRect ? stageRect.top + stageRect.height / 3 : window.innerHeight / 2;
+
+        triggerConfetti(centerX, centerY, 80);
+
+        // Multiple fireworks bursts across the screen
+        launchSalute();
+        setTimeout(() => {
+          triggerFirework(window.innerWidth * 0.25, window.innerHeight * 0.35, '#ff4d79');
+          triggerFirework(window.innerWidth * 0.75, window.innerHeight * 0.35, '#f9d423');
+        }, 300);
+        setTimeout(() => {
+          triggerFirework(window.innerWidth * 0.5, window.innerHeight * 0.25, '#c084fc');
+          triggerConfetti(window.innerWidth / 2, window.innerHeight / 3, 60);
+        }, 650);
+      }
+
+      function relightCandle(e) {
+        if (e) e.stopPropagation();
+        isBlown = false;
+        if (flameCore) flameCore.classList.remove('extinguished');
+        if (smokePuff) smokePuff.classList.remove('rise-smoke');
+        if (wishCard) wishCard.style.display = 'none';
+
+        if (blowBtn) {
+          blowBtn.innerHTML = '<span>🌬️ Tap to Blow Out The Candle!</span>';
+          blowBtn.style.background = 'rgba(255, 77, 121, 0.15)';
+          blowBtn.style.borderColor = 'rgba(255, 117, 140, 0.35)';
+        }
+
+        playChime(659.25); // E5
+      }
+
+      if (flameBtn) flameBtn.addEventListener('click', blowOutCandle);
+      if (stage) stage.addEventListener('click', blowOutCandle);
+      if (blowBtn) blowBtn.addEventListener('click', blowOutCandle);
+      if (relightBtn) relightBtn.addEventListener('click', relightCandle);
+    }
+
+    function playWishChime() {
+      try {
+        const ctx = getAudioContext();
+        if (!ctx) return;
+        
+        // Harmonic fairy chord (C6, E6, G6, B6, C7)
+        const freqs = [1046.50, 1318.51, 1567.98, 1975.53, 2093.00];
+        freqs.forEach((freq, idx) => {
+          setTimeout(() => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime);
+            gain.gain.setValueAtTime(0.001, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.5);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 1.5);
+          }, idx * 90);
+        });
+      } catch(e) {}
     }
 
     /* =========================================================
@@ -2008,22 +2450,32 @@
     /* =========================================================
        8. FIREWORKS CELEBRATION TRIGGERS
        ========================================================= */
+    function launchSalute() {
+      if (typeof launchFireworksSalute === 'function') {
+        launchFireworksSalute();
+      }
+      if (typeof triggerConfetti === 'function') {
+        triggerConfetti(window.innerWidth * 0.3, window.innerHeight * 0.4, 50);
+        triggerConfetti(window.innerWidth * 0.7, window.innerHeight * 0.4, 50);
+      }
+
+      const banner = document.getElementById('fireworks-banner');
+      if (banner) {
+        banner.textContent = `Happy Birthday, ${birthdayPerson}! 🎉❤️`;
+      }
+    }
+
+    function triggerFirework(x, y, color) {
+      if (typeof createFireworkBurst === 'function') {
+        createFireworkBurst(x, y, color);
+      }
+    }
+
     function initFireworksTriggers() {
       const btnBig = document.getElementById('big-celebrate-btn');
       const btnHero = document.getElementById('hero-celebrate-btn');
       const btnNav = document.getElementById('quick-celebrate-btn');
       const btnFinal = document.getElementById('final-fireworks-btn');
-      const banner = document.getElementById('fireworks-banner');
-
-      function launchSalute() {
-        launchFireworksSalute();
-        triggerConfetti(window.innerWidth * 0.3, window.innerHeight * 0.4, 50);
-        triggerConfetti(window.innerWidth * 0.7, window.innerHeight * 0.4, 50);
-
-        if (banner) {
-          banner.textContent = `Happy Birthday, ${birthdayPerson}! 🎉❤️`;
-        }
-      }
 
       if (btnBig) btnBig.addEventListener('click', launchSalute);
       if (btnHero) btnHero.addEventListener('click', launchSalute);
@@ -2392,9 +2844,9 @@
       render();
     }
 
-    function createFireworkBurst(x, y) {
+    function createFireworkBurst(x, y, customColor) {
       const colors = ['#ff4d79', '#f9d423', '#9d4edd', '#00f2fe', '#4facfe', '#ff758c', '#ffffff'];
-      const color = colors[Math.floor(Math.random() * colors.length)];
+      const color = customColor || colors[Math.floor(Math.random() * colors.length)];
       const count = window.innerWidth < 640 ? 45 : 75;
 
       for (let i = 0; i < count; i++) {
