@@ -1,0 +1,15 @@
+{
+  "name": "Happy Birthday, Binu Baby Sir!",
+  "short_name": "Birthday Wishes",
+  "description": "A birthday celebration for Binu Baby, Principal.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1f4d",
+  "theme_color": "#0b1f4d",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
