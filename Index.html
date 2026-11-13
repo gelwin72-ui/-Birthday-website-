@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Binu Baby Sir!</title>
+<meta name="description" content="A heartfelt birthday celebration for Binu Baby, Principal. May God bless you with good health, happiness and continued success.">
+<meta name="theme-color" content="#0b1f4d">
+<meta property="og:title" content="Happy Birthday, Binu Baby Sir!">
+<meta property="og:description" content="May God bless you with good health, happiness, peace and continued success.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="poster.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1f4d;
+    --navy-deep: #061233;
+    --gold: #f5b82e;
+    --gold-soft: #ffe08a;
+    --red: #d62828;
+    --ivory: #fff8ea;
+    --text-dim: rgba(255, 248, 234, 0.78);
+    --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --body: "Montserrat", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--body);
+    color: var(--ivory);
+    min-height: 100vh;
+    min-height: 100dvh;
+    background:
+      radial-gradient(ellipse at 50% -10%, #1b3c86 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 110%, #3a1a1a 0%, transparent 45%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    overflow-x: hidden;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  img { max-width: 100%; display: block; }
+  button { font: inherit; cursor: pointer; border: none; }
+  :focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; border-radius: 6px; }
+
+  /* ---------- Background layers ---------- */
+  #confetti {
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 5;
+  }
+  .sparkles { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+  .sparkle {
+    position: absolute; width: 10px; height: 10px;
+    background: radial-gradient(circle, #fff 0%, var(--gold) 40%, transparent 70%);
+    border-radius: 50%;
+    animation: twinkle 3.2s ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.4); }
+    50% { opacity: 0.95; transform: scale(1.15); }
+  }
+
+  .balloons { position: fixed; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+  .balloon {
+    position: absolute; bottom: -180px;
+    width: 58px; height: 72px;
+    border-radius: 50% 50% 48% 48%;
+    background: radial-gradient(circle at 32% 28%, #fff 0 8%, var(--c) 22%, color-mix(in srgb, var(--c) 60%, #000) 100%);
+    box-shadow: inset -6px -8px 14px rgba(0,0,0,0.25), 0 0 18px color-mix(in srgb, var(--c) 45%, transparent);
+    animation: rise var(--dur) linear var(--delay) infinite;
+    opacity: 0.85;
+  }
+  .balloon::before {
+    content: ""; position: absolute; left: 50%; top: 100%;
+    width: 1px; height: 90px; background: rgba(255,248,234,0.35);
+    transform: translateX(-50%);
+  }
+  .balloon::after {
+    content: ""; position: absolute; left: 50%; top: 100%; margin-top: 88px;
+    width: 0; height: 0; transform: translateX(-50%);
+    border-left: 5px solid transparent; border-right: 5px solid transparent;
+    border-top: 6px solid var(--c);
+  }
+  @keyframes rise {
+    0%   { transform: translate3d(0, 0, 0) rotate(-4deg); }
+    50%  { transform: translate3d(18px, -55vh, 0) rotate(4deg); }
+    100% { transform: translate3d(-12px, -115vh, 0) rotate(-3deg); }
+  }
+
+  /* ---------- Layout ---------- */
+  main {
+    position: relative; z-index: 3;
+    width: min(1100px, 100% - 32px);
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 56px) 0 64px;
+    display: grid;
+    gap: clamp(28px, 5vw, 56px);
+  }
+
+  .hero-title {
+    text-align: center;
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 0.95;
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff3c4 0%, var(--gold) 45%, #c9861a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 22px rgba(245, 184, 46, 0.35));
+    animation: titleIn 1.4s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-title span { display: block; font-style: italic; font-size: 0.5em; letter-spacing: 0.08em; color: var(--gold-soft); -webkit-text-fill-color: var(--gold-soft); }
+  @keyframes titleIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.98); letter-spacing: 0.2em; }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Poster presented like a framed print */
+  .poster-frame {
+    position: relative;
+    width: min(640px, 100%);
+    justify-self: center;
+    padding: 10px;
+    border-radius: 18px;
+    background: linear-gradient(145deg, #ffe08a, #b9791a 40%, #ffe08a 70%, #9a6414);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6), 0 0 60px rgba(245,184,46,0.25);
+    animation: posterIn 1.2s 0.25s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .poster-frame img {
+    width: 100%; height: auto;
+    border-radius: 10px;
+    cursor: zoom-in;
+    transition: transform .5s ease;
+  }
+  .poster-frame:hover img { transform: scale(1.012); }
+  @keyframes posterIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.94) rotate(-1deg); }
+    to   { opacity: 1; transform: none; }
+  }
+  .glow-ring {
+    position: absolute; inset: -18px; border-radius: 28px;
+    border: 1px solid rgba(255,224,138,0.35);
+    animation: pulse 3.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+  }
+
+  .honoree { text-align: center; animation: fadeUp 1s 0.6s both; }
+  .honoree h2 {
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .honoree p {
+    margin-top: 6px;
+    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .message {
+    max-width: 680px; margin: 0 auto;
+    text-align: center;
+    font-family: var(--display);
+    font-size: clamp(1.25rem, 3.4vw, 1.6rem);
+    line-height: 1.6;
+    color: var(--text-dim);
+    animation: fadeUp 1s .8s both;
+  }
+  .message strong { color: var(--gold-soft); font-weight: 700; font-style: italic; }
+  .message .sign {
+    display: block; margin-top: 18px;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: #fff; font-style: italic;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+    animation: fadeUp 1s 1s both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-family: var(--body); font-weight: 600; font-size: 0.9rem;
+    color: var(--navy-deep);
+    background: linear-gradient(180deg, #ffe9a6, var(--gold));
+    box-shadow: 0 8px 22px rgba(245,184,46,0.35), inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: transform .2s ease, box-shadow .2s ease;
+    min-height: 44px;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(245,184,46,0.5); }
+  .btn:active { transform: translateY(0); }
+  .btn.primary {
+    background: linear-gradient(180deg, #ff5c5c, var(--red));
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(214,40,40,0.45), inset 0 1px 0 rgba(255,255,255,0.35);
+    padding: 15px 28px; font-size: 1rem; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .btn.ghost {
+    background: rgba(255,248,234,0.08);
+    color: var(--ivory);
+    box-shadow: inset 0 0 0 1px rgba(255,224,138,0.45);
+  }
+  .btn.ghost.on { background: rgba(245,184,46,0.22); }
+
+  /* ---------- Cake ---------- */
+  .cake-wrap { display: grid; justify-items: center; gap: 14px; }
+  .cake-wrap h3 {
+    font-family: var(--display); font-style: italic; font-weight: 600;
+    font-size: clamp(1.4rem, 3.5vw, 1.9rem); color: var(--gold-soft);
+  }
+  .cake { width: min(340px, 86vw); height: auto; cursor: pointer; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45)); }
+  .flame { transform-origin: center bottom; animation: flicker 1.4s ease-in-out infinite; }
+  .flame.d2 { animation-delay: -0.5s; }
+  .flame.d3 { animation-delay: -0.9s; }
+  @keyframes flicker {
+    0%, 100% { transform: scale(1, 1); }
+    25% { transform: scale(0.92, 1.08); }
+    60% { transform: scale(1.06, 0.95); }
+  }
+  .cake.blown .flame { opacity: 0; transition: opacity .4s; }
+  .cake-hint { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.08em; }
+
+  /* ---------- Blessing ---------- */
+  .blessing {
+    text-align: center; padding: 28px 22px;
+    border-radius: 22px;
+    background: rgba(255,248,234,0.05);
+    box-shadow: inset 0 0 0 1px rgba(255,224,138,0.22);
+    max-width: 720px; margin: 0 auto;
+    animation: fadeUp 1s both;
+  }
+  .blessing p { font-family: var(--display); font-size: clamp(1.15rem, 3vw, 1.4rem); line-height: 1.6; color: var(--ivory); }
+  .blessing em { color: var(--gold-soft); }
+
+  footer { text-align: center; font-size: 0.78rem; color: rgba(255,248,234,0.5); padding-bottom: 12px; position: relative; z-index: 3; }
+
+  /* ---------- Celebration overlay ---------- */
+  .celebrate {
+    position: fixed; inset: 0; z-index: 50;
+    display: grid; place-items: center; text-align: center;
+    padding: 24px;
+    background: radial-gradient(circle at center, rgba(11,31,77,0.92) 0%, rgba(6,18,51,0.97) 70%);
+    opacity: 0; visibility: hidden;
+    transition: opacity .6s ease, visibility .6s;
+  }
+  .celebrate.open { opacity: 1; visibility: visible; }
+  .celebrate .card { max-width: 640px; animation: zoomIn 1s cubic-bezier(.2,.8,.2,1) both; }
+  .celebrate .big {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.6rem, 9vw, 5.5rem); line-height: 1;
+    background: linear-gradient(180deg, #fff3c4, var(--gold));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .celebrate .name { margin-top: 18px; font-family: var(--display); font-style: italic; font-size: clamp(1.4rem, 4vw, 2rem); color: #fff; }
+  .celebrate .close { margin-top: 28px; }
+  @keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 60;
+    background: rgba(3,8,24,0.94);
+    display: grid; place-items: center;
+    padding: 16px;
+    opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+  }
+  .lightbox.open { opacity: 1; visibility: visible; }
+  .lightbox img {
+    max-height: calc(100dvh - 110px); width: auto; max-width: 100%;
+    border-radius: 12px; box-shadow: 0 0 60px rgba(245,184,46,0.25);
+  }
+  .lightbox .btn { position: absolute; top: max(16px, env(safe-area-inset-top)); right: 16px; }
+  .lightbox .download { top: auto; bottom: max(16px, env(safe-area-inset-bottom)); }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: max(22px, env(safe-area-inset-bottom));
+    transform: translate(-50%, 140%);
+    background: var(--ivory); color: var(--navy-deep);
+    padding: 12px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+    z-index: 70; max-width: calc(100% - 32px); text-align: center;
+  }
+  .toast.show { transform: translate(-50%, 0); }
+
+  /* ---------- Responsive ---------- */
+  @media (min-width: 900px) {
+    main { grid-template-columns: 1fr 1fr; align-items: center; column-gap: 64px; }
+    .hero-title, .honoree, .message, .controls, .blessing { grid-column: 2; }
+    .poster-frame { grid-row: 1 / span 4; grid-column: 1; }
+    .cake-wrap { grid-column: 2; }
+    .hero-title { text-align: left; }
+    .honoree, .message { text-align: left; margin: 0; }
+    .controls { justify-content: flex-start; }
+    .blessing { margin: 0; }
+  }
+  @media (max-width: 380px) {
+    .btn { padding: 11px 16px; font-size: 0.85rem; }
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    .balloon, .sparkle, .glow-ring { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sparkles" id="sparkles" aria-hidden="true"></div>
+<div class="balloons" id="balloons" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+  <h1 class="hero-title">
+    Happy
+    <span>Birthday</span>
+  </h1>
+
+  <figure class="poster-frame">
+    <div class="glow-ring" aria-hidden="true"></div>
+    <img src="poster.png" alt="Happy Birthday poster for Binu Baby, Principal, with balloons and a birthday cake" width="1233" height="1276" id="poster">
+  </figure>
+
+  <div class="honoree">
+    <h2>Binu Baby</h2>
+    <p>Principal</p>
+  </div>
+
+  <p class="message">
+    May God bless you with <strong>good health, happiness, peace</strong> and continued success in all that you do.
+    <br><br>
+    Wishing you a wonderful year ahead filled with joy, achievements and countless blessings.
+    <span class="sign">Happy Birthday, Binu Baby Sir!</span>
+  </p>
+
+  <section class="controls" aria-label="Celebration controls">
+    <button class="btn primary" id="startBtn" type="button">Start Celebration</button>
+    <button class="btn ghost" id="musicBtn" type="button" aria-pressed="false">
+      <span aria-hidden="true">&#9835;</span> <span id="musicLabel">Play Music</span>
+    </button>
+    <button class="btn ghost" id="fsBtn" type="button">Fullscreen</button>
+    <button class="btn ghost" id="shareBtn" type="button">Share</button>
+    <button class="btn ghost" id="viewBtn" type="button">View Poster</button>
+  </section>
+
+  <section class="cake-wrap" aria-label="Birthday cake">
+    <h3>Make a wish</h3>
+    <svg class="cake" id="cake" viewBox="0 0 300 260" role="img" aria-label="Birthday cake with three candles. Tap to blow them out.">
+      <defs>
+        <linearGradient id="choc" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#5a2e1a"/>
+          <stop offset="1" stop-color="#2a130a"/>
+        </linearGradient>
+        <linearGradient id="plate" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#ffffff"/>
+          <stop offset="1" stop-color="#cfd6e4"/>
+        </linearGradient>
+        <radialGradient id="flameG" cx="0.5" cy="0.7" r="0.6">
+          <stop offset="0" stop-color="#fff7c2"/>
+          <stop offset="0.5" stop-color="#ffb62e"/>
+          <stop offset="1" stop-color="#ff5a1f" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="150" cy="232" rx="140" ry="16" fill="url(#plate)"/>
+      <rect x="40" y="120" width="220" height="108" rx="14" fill="url(#choc)"/>
+      <rect x="40" y="120" width="220" height="22" rx="10" fill="#fff8ea"/>
+      <g fill="#fff8ea">
+        <circle cx="70" cy="128" r="14"/><circle cx="108" cy="126" r="14"/>
+        <circle cx="150" cy="128" r="14"/><circle cx="192" cy="126" r="14"/>
+        <circle cx="228" cy="128" r="14"/>
+      </g>
+      <g fill="#c81e1e">
+        <circle cx="70" cy="110" r="9"/><circle cx="150" cy="110" r="9"/><circle cx="228" cy="110" r="9"/>
+      </g>
+      <rect x="82" y="72" width="136" height="50" rx="10" fill="#7a3d22"/>
+      <rect x="82" y="72" width="136" height="14" rx="6" fill="#fff8ea"/>
+      <g>
+        <rect x="110" y="34" width="6" height="40" fill="#3b82f6"/>
+        <rect x="146" y="34" width="6" height="40" fill="#d62828"/>
+        <rect x="182" y="34" width="6" height="40" fill="#f5b82e"/>
+        <g class="flame" id="f1"><path d="M113 34 C106 20 118 14 113 0 C126 12 124 24 113 34Z" fill="url(#flameG)"/></g>
+        <g class="flame d2" id="f2"><path d="M149 34 C142 20 154 14 149 0 C162 12 160 24 149 34Z" fill="url(#flameG)"/></g>
+        <g class="flame d3" id="f3"><path d="M185 34 C178 20 190 14 185 0 C198 12 196 24 185 34Z" fill="url(#flameG)"/></g>
+      </g>
+    </svg>
+    <p class="cake-hint">Tap the cake to blow out the candles</p>
+  </section>
+
+  <section class="blessing">
+    <p>
+      <em>"May God bless you with good health, happiness, peace and continued success in all that you do."</em>
+      <br><br>
+      Wishing you a wonderful year ahead filled with joy, achievements and countless blessings.
+    </p>
+  </section>
+</main>
+
+<footer>Made with love for Binu Baby Sir</footer>
+
+<div class="celebrate" id="celebrate" role="dialog" aria-modal="true" aria-labelledby="celebrateTitle">
+  <div class="card">
+    <div class="big" id="celebrateTitle">Happy Birthday!</div>
+    <p class="name">Binu Baby Sir</p>
+    <button class="btn primary close" id="closeCelebrate" type="button">Keep Celebrating</button>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Poster full size">
+  <button class="btn ghost" id="closeLightbox" type="button">Close</button>
+  <img src="poster.png" alt="Happy Birthday poster, full size">
+  <a class="btn ghost download" href="poster.png" download="birthday-poster.png">Download</a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $ = (id) => document.getElementById(id);
+
+  /* ---------- Balloons, sparkles ---------- */
+  const balloonColors = ["#1e5bd8", "#f5b82e", "#ffffff", "#d62828", "#1e5bd8", "#f5b82e"];
+  const balloonBox = $("balloons");
+  const balloonCount = window.innerWidth < 600 ? 5 : 8;
+  for (let i = 0; i < balloonCount; i++) {
+    const b = document.createElement("div");
+    b.className = "balloon";
+    b.style.setProperty("--c", balloonColors[i % balloonColors.length]);
+    b.style.left = (4 + (i * 92) / balloonCount + Math.random() * 6) + "%";
+    b.style.setProperty("--dur", (16 + Math.random() * 8) + "s");
+    b.style.setProperty("--delay", (-Math.random() * 20) + "s");
+    balloonBox.appendChild(b);
+  }
+
+  const sparkleBox = $("sparkles");
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement("span");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    s.style.animationDelay = (Math.random() * 3.2) + "s";
+    s.style.width = s.style.height = (6 + Math.random() * 8) + "px";
+    sparkleBox.appendChild(s);
+  }
+
+  /* ---------- Confetti (canvas) ---------- */
+  const canvas = $("confetti");
+  const ctx = canvas.getContext("2d");
+  const pieces = [];
+  const palette = ["#f5b82e", "#ffe08a", "#ffffff", "#d62828", "#3b82f6"];
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  function burst(count, x, y) {
+    if (reduceMotion) return;
+    const max = 320
